@@ -42,10 +42,10 @@ let presentarCursos=id=>{
 let presentarCursosValCall =(value, callback) => {
     setTimeout(function() {
         let notaEst = cursos.find(function(notaEst ) {
-        return notaEst.id == value});
+        return notaEst.idRes == value});
         console.log('Id curso: '+notaEst.idRes + ', nombre del curso : '+notaEst.nombre+'\n'
         +'Duracion del curso:  '+notaEst.tiempo + ' horas, el costo de curso es: '+notaEst.costo+'\n'
-        +'-----------------------');
+        +'\n');
         callback(value, value * value);
     }, 2000);
 }

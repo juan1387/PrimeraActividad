@@ -1,0 +1,15 @@
+{
+  "name": "repositorio",
+  "version": "1.0.1",
+  "description": "Actividad 1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Juan Camilo Noriega",
+  "license": "ISC",
+  "dependencies": {
+    "jargs": "^0.4.1",
+    "yargs": "^13.2.4"
+  }
+}

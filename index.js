@@ -1,4 +1,4 @@
-const {cursos,presentarCursos,presentarCursosValCall,loopAllCours} = requirer('./materias')
+const {cursos,presentarCursos,presentarCursosValCall,loopAllCours} = require('./materias')
 const opciones ={
     idCurso:{
         demand:true,
@@ -15,7 +15,7 @@ const opciones ={
 }
 
 const argv = require('yargs')
-            .command ('Matricular','Matricular estudiante', opciones)
+            .command ('inscribir','Matricular estudiante', opciones)
             .argv
 
 const fs = require('fs');
@@ -26,12 +26,12 @@ let docEstu = argv.cedula;
 let idCurso = argv.idCurso;
 
 let makeFile = (nombre,cedula,idCurso) =>{
-    let estudianteNotaImp = cursos.find(function(notaEst ) {return notaEst.id == idCurso});
+    let estudianteNotaImp = cursos.find(function(notaEst ) {return notaEst.idRes == idCurso});
    
-    if(estudianteNotaImp===undefined){Console.log('Materia no encontrada');}else{
+    if(estudianteNotaImp===undefined){console.log('Materia no encontrada');}else{
         texto = 'el estudiante '+nombre+' con cedula numero '+cedula+'\n'+
             'ha sido matriculado en el curso: ' + idCurso+', llamado: '+estudianteNotaImp.nombre+'\n'+
-            'con una duración de '+ estudianteNotaImp.duracion + ' horas y el valor del curso es: '+estudianteNotaImp.valor;
+            'con una duración de '+ estudianteNotaImp.tiempo + ' horas y el valor del curso es: '+estudianteNotaImp.costo;
         fs.writeFile('prematricula.txt',texto,(err)=>{
         if (err) 
         {
@@ -44,9 +44,9 @@ let makeFile = (nombre,cedula,idCurso) =>{
     }
 
 if(process.argv.length > 2){
-    if(process.argv[2] === 'Matricular')
+    if(process.argv[2] === 'inscribir')
         {
-            let estudianteNotaImp = cursos.find(function(notaEst ) {return notaEst.id == idCurso});
+            let estudianteNotaImp = cursos.find(function(notaEst ) {return notaEst.idRes == idCurso});
     //console.log('el id del curso es: '+estudianteNota.id + ', el nombre del curso es: '+estudianteNota.nombre);
         if(estudianteNotaImp===undefined){
             console.log('El curso no se encuentra registrado');
